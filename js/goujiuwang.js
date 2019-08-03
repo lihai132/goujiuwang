@@ -28,6 +28,7 @@ $(function () {
 
             let html5 = this.createLbt();
             oGouJiuWang.append(html5);
+            this.crestelbtlist();
 
 
 
@@ -37,7 +38,7 @@ $(function () {
 
         //处理数据的方法
         shuju() {
-            // this.addListnv();
+            this.addLbtlist();
         }
 
 
@@ -276,10 +277,44 @@ $(function () {
         //建立侧边栏的方法
         crestelbtlist() {
             let data = this.josn;
-            data.map((element) => {
-                console.log(element);
+            let html = data.map((element) => {
 
+                return `<div class="lbt-list">
+               <div class="lbt-list-left">
+                   ${element.nav.map((e)=>{
+                       return `<dl>
+                       <dt>${e.title}</dt>
+                       ${e.nv.map((e1)=>{
+                           return `<dd><a href="" class="c1">${e1}</a></dd>`
+                       }).join("")}
+                   </dl>
+                  `
+                   }).join("")}
+               </div>
+               <div class="lbt-list-right">
+                   <ul>
+                       ${element.tp.map((ele)=>{
+                           return `<li><a href=""><img src="${ele}" alt=""></a></li>`
+                       }).join("")}
+                   </ul>
+                   <div class="r1"><img src="${element.tp1}" alt=""></div>
+               </div>
+           </div>`
+            }).join("");
+
+            $(".lbt").append(html);
+
+
+            $(".lbt-list-left").each(function (i, ele) {
+
+                ele.children[2].className = 'd3';
+                ele.children[3].className = 'd4';
             })
+
+
+
+
+
         }
 
 
@@ -325,50 +360,22 @@ $(function () {
 
         //侧边栏部分的效果
 
-        // addListnv() {
-        //     let data = this.josn;
-        //     // console.log(data);
-        //     let oLbtlist = $("<div class='lbt-list'></div>");
-        //     $(".list-n1").mouseenter(function () {
+        addLbtlist() {
+            // $(".list-n1:lt(8)");
+            // console.log($(".list-n1:lt(8)"));
 
+            $(".list-n1:lt(8)").hover(function () {
+                console.log("移入");
 
-        //         let index = $(".list-n1").index(this);
+                let index = $(".list-n1").index(this);
+                console.log(index);
 
-        //         console.log(data[index].tp);
+                console.log(index);
+                $(".lbt-list").eq(index).stop(false).show(1);
 
-
-        //         let res1 = data[index].tp.map((ele) => {
-        //             return `<li><a href=""><img src="${ele}" alt=""></a></li>`
-        //         }).join("");
-        //         let oUl = $("<ul></ul>");
-        //         oUl.append(res1);
-        //         console.log(oUl[0]);
-
-        //         let res2 = data[index].nav.map((element) => {
-        //             return `<dl>
-        //             <dt>${element.title}</dt>
-        //             ${element.nv.map((e)=>{
-        //                 return `<dd class="d1"><a href="" class="c1">${e}</a></dd>`
-        //             })}
-        //         </dl>`
-        //         }).join("");
-
-        //         let oLeft = $("<div class='left'></div>");
-        //         let oRight = $("<div class='right'></div>");
-
-
-        //         oLeft.append(res2);
-
-        //         let res3 = `<div class="r1"><img src="${data[index].tp1}" alt=""></div>`
-
-        //         oRight.append(oUl);
-        //         oRight.append(res3);
-
-        //         oLbtlist.append(oLeft);
-        //         oLbtlist.append(oRight);
-        //         console.log(oLbtlist[0]);
-        //         $(".lbt").append(oLbtlist)
-        //         $(".lbt-list").css("display", "block");
+                $(".lbt-list").eq(index).mouseenter(function () {
+                    $(".lbt-list").eq(index).stop(false).show(1);
+                })
 
 
 
@@ -378,33 +385,46 @@ $(function () {
 
 
 
-
-
-        //         // data[index].map((element) => {
-
-
-
-        //         // }).join("");
-        //         // console.log(res2);
+            }, function () {
+                console.log("移出");
+                let index = $(".list-n1").index(this);
+                $(".lbt-list").eq(index).hide(1);
 
 
 
-
-
-
+                $(".lbt-list").eq(index).mouseleave(function () {
+                    $(".lbt-list").eq(index).hide(1);
+                })
+            })
 
 
 
 
 
 
-        //     })
+            // $(".lbt-list").hover(function () {
+            //     console.log("移入");
 
-        //     $(".list-n1").mouseleave(function () {
-        //         $(".lbt-list").remove();
-        //     })
-        // }
+            //     let index = $(".list-n1").index(this);
+            //     console.log(index);
+            //     $(".lbt-list").eq(index).show(1);
 
+
+            // }, function () {
+            //     console.log("移出");
+            //     let index = $(".list-n1").index(this);
+            //     $(".lbt-list").eq(index).hide(1);
+            // })
+
+
+
+
+        }
+
+        //轮播图效果
+        addLbt() {
+
+        }
 
 
 

@@ -11,6 +11,7 @@ html {
 #goujiuwang {
     width: 100%;
     height: 100%;
+    margin-bottom: 400px;
 
 
 }
@@ -307,14 +308,17 @@ html {
             }
 
             ul {
+                width: 185px;
+
                 background: #CC0210;
-                height: 495px;
+                height: 450px;
                 position: absolute;
                 top: 45px;
                 left: 0;
 
                 li {
-                    height: 49px;
+                    width: 185px;
+                    height: 45px;
                     position: relative;
 
                     a {
@@ -343,7 +347,7 @@ html {
 
 
 .lbt {
-    margin-bottom: 100px;
+
     height: 450px;
     width: 100%;
     position: relative;
@@ -358,6 +362,7 @@ html {
 
             img {
                 width: 100%;
+                height: 450px;
             }
         }
 
@@ -396,7 +401,7 @@ html {
         ul {
             position: absolute;
             left: 551px;
-            top: 465px;
+            top: 415px;
 
             li {
                 float: left;
@@ -424,7 +429,7 @@ html {
 
     .right {
         position: absolute;
-        top: 43px;
+        top: 14px;
         left: 1025px;
 
 
@@ -446,9 +451,9 @@ html {
 
 
 
-        .left {
+        .lbt-list-left {
             height: 100%;
-            width: 47%;
+            width: 55%;
             float: left;
             padding-left: 3%;
 
@@ -479,10 +484,11 @@ html {
                     float: left;
                     margin-top: 10px;
                     padding: 0 10px;
-
-                    border-left: 1px solid #ccc;
                     font-size: 14px;
                     line-height: 14px;
+                    border-right: 1px solid #ccc;
+
+
 
                     .c1 {
                         color: red;
@@ -502,20 +508,22 @@ html {
 
                 }
 
-                .d1 {
+                .d4 {
                     border-left: none;
                 }
             }
         }
 
-        .right {
-            margin-left: 10%;
+        .lbt-list-right {
+
+            margin-left: 18%;
             float: left;
             height: 100%;
             width: 264px;
             background: #ccc;
 
             ul {
+                margin-top: 10px;
                 margin-left: 10px;
                 margin-right: 10px;
                 width: 244px;
@@ -547,5 +555,9 @@ html {
                 }
             }
         }
+    }
+
+    .lbt1 {
+        display: block;
     }
 }
