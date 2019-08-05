@@ -37,6 +37,9 @@ $(function () {
             $(".lbt .left a").eq(0).addClass("a1");
             this.crestelbtlist();
 
+            let html6 = this.create1();
+
+            oGouJiuWang.append(html6)
 
 
 
@@ -322,6 +325,15 @@ $(function () {
 
 
 
+        }
+
+        create1() {
+            return `  <div class="list-1">
+            <li><img src="./images/zhen-icon.png" alt="">正品保证 放心购买</li>
+            <li><img src="./images/mian-icon.png" alt=""> 满100即享全国免邮费</li>
+            <li><img src="./images/pei-icon (1).png" alt="">破损包赔 售后无忧</li>
+            <li class='list-1-4'><img src="./images/phone-icon.png" alt="">APP下单更优惠</li>
+        </div>`
         }
 
 

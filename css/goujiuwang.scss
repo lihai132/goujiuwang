@@ -368,7 +368,7 @@ html {
 
         .a1 {
             display: block;
-            background: red;
+
         }
 
         .kh1 {
@@ -560,5 +560,25 @@ html {
 
     .lbt1 {
         display: block;
+    }
+}
+
+.list-1 {
+    height: 50px;
+    margin: 0 auto;
+    line-height: 50px;
+    color: #9B9B9B;
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+
+    li {
+        float: left;
+        margin-left: 35px;
+    }
+
+    .list-1-4 {
+        float: right;
+        margin-right: 35px;
     }
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var haiarr = [];
+        $(".big-addbox").find("li").each(function (i, ele) {
+            let o = {};
+            o.src = $(ele).find("img")[0].src;
+            o.text = $(ele).find(".fl").html();
+            o.price = $(ele).find(".fr>em").html();
+            arr.push(o);
+            // console.log(o)
+
+        })
+        console.log(haiarr)
+
+
+
+        var arr5 = [];
+        $(".ptj-rt").find("li").each(function (i, ele) {
+            let o = {};
+            o.title = $(ele).find(".item-style").html();
+            o.src = $(ele).find("img")[0].src;
+            o.text = $(ele).find(".item-name").html();
+            o.price = $(ele).find(".item-pri").html();
+            arr5.push(o);
+            // console.log(o)
+
+        })
+        console.log(arr5)
+    </script>
+</body>
+
+</html>
