@@ -1,9 +1,14 @@
 $(function () {
     class Goujiuwang {
-        constructor(json) {
+        constructor(json, json1) {
 
             this.josn = json;
-            console.log(json);
+            this.josn1 = json1;
+            this.lbt = json1.lbt;
+            this.right = json1.right;
+
+
+
 
 
         }
@@ -11,24 +16,28 @@ $(function () {
         innit() {
             let html1 = this.createHaedertop();
             let oGouJiuWang = $("<div id='goujiuwang'></div>");
-            // console.log(oGouJiuWang);
             oGouJiuWang.append(html1);
-            // console.log($("#goujiuwang")[0]);
             $("body").append(oGouJiuWang);
 
-            let html2 = this.createHeadertp();
 
+            let html2 = this.createHeadertp();
             oGouJiuWang.append(html2);
+
             let html3 = this.createItem();
             oGouJiuWang.append(html3);
+
             let html4 = this.createList();
             let oList = $("<div class='list'></div>");
             oList.append(html4);
             oGouJiuWang.append(oList);
 
+
             let html5 = this.createLbt();
             oGouJiuWang.append(html5);
+            $(".lbt .left a").eq(0).addClass("a1");
             this.crestelbtlist();
+
+
 
 
 
@@ -39,6 +48,7 @@ $(function () {
         //处理数据的方法
         shuju() {
             this.addLbtlist();
+            this.addLbt();
         }
 
 
@@ -226,37 +236,24 @@ $(function () {
         }
         //建立轮播图的方法
         createLbt() {
-            return ` <div class="lbt">
-<div class="left">
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm" class="a1">
-        <img src="./images/lb1.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb2.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb3.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb4.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb5.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb6.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb7.jpg" alt="">
-    </a>
-    <a href="http://www.gjw.com/product/Item-ID-7735.htm">
-        <img src="./images/lb8.jpg" alt="">
-    </a>
-    <div class="kh1">
-        <</div> <div class="kh2">>
-    </div>
-    <ul>
-        <li class="l1"><a href="">1</a></li>
+            let res1 = this.lbt.map((ele) => {
+
+                return `
+            <a href="http://www.gjw.com/product/Item-ID-7735.htm">
+                     <img src="${ele}" alt="">
+            </a>`
+            }).join("");
+
+
+
+            let oLeft = $("<div class='left'></div>")
+            oLeft.append(res1)
+
+            let res2 = `<div class="kh1">
+            <</div> <div class="kh2">>
+        </div>
+        <ul class='lbt-ul'>
+        <li class='a1'><a href="">1</a></li>
         <li><a href="">2</a></li>
         <li><a href="">3</a></li>
         <li><a href="">4</a></li>
@@ -264,15 +261,25 @@ $(function () {
         <li><a href="">6</a></li>
         <li><a href="">7</a></li>
         <li><a href="">8</a></li>
-    </ul>
+        </ul>`;
 
-</div>
-<div class="right">
-    <a href=""><img src="./images/jd1.jpg" alt=""></a>
-    <a href=""><img src="./images/jd2.jpg" alt=""></a>
-</div>
+            oLeft.append(res2);
 
-</div>`
+            // console.log(oLeft[0]);
+            let res3 = this.right.map((e) => {
+                return `<a href=""><img src="${e}" alt=""></a>`
+            }).join("");
+
+            let oRight = $("<div class='right'></div>");
+            oRight.append(res3);
+            let oLbt = $("<div class='lbt'></div>");
+
+            oLbt.append(oLeft);
+            oLbt.append(oRight);
+
+
+
+            return oLbt;
         }
         //建立侧边栏的方法
         crestelbtlist() {
@@ -361,32 +368,19 @@ $(function () {
         //侧边栏部分的效果
 
         addLbtlist() {
-            // $(".list-n1:lt(8)");
-            // console.log($(".list-n1:lt(8)"));
 
             $(".list-n1:lt(8)").hover(function () {
-                console.log("移入");
+
 
                 let index = $(".list-n1").index(this);
-                console.log(index);
 
-                console.log(index);
                 $(".lbt-list").eq(index).stop(false).show(1);
 
                 $(".lbt-list").eq(index).mouseenter(function () {
                     $(".lbt-list").eq(index).stop(false).show(1);
                 })
-
-
-
-
-
-
-
-
-
             }, function () {
-                console.log("移出");
+
                 let index = $(".list-n1").index(this);
                 $(".lbt-list").eq(index).hide(1);
 
@@ -396,33 +390,113 @@ $(function () {
                     $(".lbt-list").eq(index).hide(1);
                 })
             })
-
-
-
-
-
-
-            // $(".lbt-list").hover(function () {
-            //     console.log("移入");
-
-            //     let index = $(".list-n1").index(this);
-            //     console.log(index);
-            //     $(".lbt-list").eq(index).show(1);
-
-
-            // }, function () {
-            //     console.log("移出");
-            //     let index = $(".list-n1").index(this);
-            //     $(".lbt-list").eq(index).hide(1);
-            // })
-
-
-
-
         }
 
         //轮播图效果
         addLbt() {
+
+            let index1 = 0;
+
+
+            setInterval(() => {
+                let index = $(".lbt .left .a1").index();
+
+
+                if (index > $(".lbt .left >a").length - 2) {
+                    index = -1;
+
+                }
+
+                Array.from($(".lbt .left >a")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt .left >a")[index + 1].className = "a1";
+                Array.from($(".lbt-ul >li")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt-ul >li")[index + 1].className = "l1";
+
+
+
+
+            }, 2000)
+
+            $(".lbt-ul >li").each(function (index, element) {
+                console.log(index, element);
+
+
+                element.onclick = (e) => {
+                    if (e && e.preventDefault) {
+                        e.preventDefault();
+                    }
+                    // console.log(index);
+                    Array.from($(".lbt .left >a")).forEach((ele) => {
+                        ele.className = "";
+                    })
+                    $(".lbt .left >a")[index].className = "a1";
+                    Array.from($(".lbt-ul >li")).forEach((ele) => {
+                        ele.className = "";
+                    })
+                    $(".lbt-ul >li")[index].className = "l1";
+
+
+
+                }
+
+            })
+
+
+
+            $(".kh1").click((e) => {
+
+                let index = $(".lbt .left .a1").index() - 1;
+                console.log(index);
+
+
+                if (index < 0) {
+                    index = $(".lbt .left >a").length - 1;
+                    console.log("iiiiii", index)
+                }
+
+                Array.from($(".lbt .left >a")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt .left >a")[index].className = "a1";
+                Array.from($(".lbt-ul >li")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt-ul >li")[index].className = "l1";
+            })
+
+
+            $(".kh2").click((e) => {
+
+                let index = $(".lbt .left .a1").index();
+                console.log(index);
+
+
+                if (index > $(".lbt .left >a").length - 2) {
+                    index = -1;
+
+                }
+
+                Array.from($(".lbt .left >a")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt .left >a")[index + 1].className = "a1";
+                Array.from($(".lbt-ul >li")).forEach((ele) => {
+                    ele.className = "";
+                })
+                $(".lbt-ul >li")[index + 1].className = "l1";
+            })
+
+
+
+
+
+
+
+
 
         }
 
@@ -458,9 +532,15 @@ $(function () {
 
 
     $.getJSON("../goujiuwang/php/php.json", (json) => {
-        let goujiuwang = new Goujiuwang(json);
-        goujiuwang.innit();
-        goujiuwang.shuju();
+
+
+        $.getJSON("../goujiuwang/php/lbt.json", (json1) => {
+            let goujiuwang = new Goujiuwang(json, json1);
+            goujiuwang.innit();
+            goujiuwang.shuju();
+
+        })
+
 
     })
 

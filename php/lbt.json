@@ -1,0 +1,12 @@
+{
+    "lbt": ["./images/lb1.jpg",
+        "./images/lb2.jpg",
+        "./images/lb3.jpg",
+        "./images/lb4.jpg",
+        "./images/lb5.jpg",
+        "./images/lb6.jpg",
+        "./images/lb7.jpg",
+        "./images/lb8.jpg"
+    ],
+    "right": ["./images/jd1.jpg", "./images/jd2.jpg"]
+}
